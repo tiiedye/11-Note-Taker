@@ -41,23 +41,26 @@
   <script>
     $(".save-note").on("click", function(event) {
       event.preventDefault();
-      var note = {
+      var newNote = {
         title: $(".note-title").val().trim(),
         text: $(".note-textarea").val().trim(),
         id: $(".note-title").val().trim(),
       };
+      note.push(newNote);
 
-      saveNote();
+      handleNoteSave();
     });
 
     $(".delete-note").on("click", function(event) {
       event.preventDefault();
       handleNoteDelete();
+      $(".list-group-item").empty();
       renderNoteList();
     });
 
     $(".list-group-item").on("click", function(event) {
       event.preventDefault();
+      getNotes();
       renderActiveNote();
     })
 
